@@ -1,6 +1,0 @@
-#Thu Mar 20 16:13:19 UTC 2025
-/home/ec2-user/abc/kogito-springboot-examples/process-kafka-multi-springboot/src/main/java/org/acme/travel/Traveller.java=1742485839768
-/home/ec2-user/abc/kogito-springboot-examples/process-kafka-multi-springboot/src/main/java/org/kie/kogito/tests/KogitoKafkaMultiSpringbootApplication.java=1742485839768
-/home/ec2-user/abc/kogito-springboot-examples/process-kafka-multi-springboot/src/main/resources/application.properties=1742485839767
-/home/ec2-user/abc/kogito-springboot-examples/process-kafka-multi-springboot/src/test/java/org/acme/travel/tests/multimessaging/springboot/MultiMessagingIT.java=1742485839767
-configuration*?=7FD1DFAE4E49B7BF80BEA2A003B72638E4B3B76F
