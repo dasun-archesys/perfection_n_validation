@@ -18,25 +18,25 @@
  */
 package defaultPackage
 
-import org.acme.travel.Traveller;
+import org.acme.travel.taxfile;
 
 
-rule "Process travellers" ruleflow-group "travellers"
+rule "Determine Deductions" ruleflow-group "deductions"
 
 when
-    $traveller: Traveller(processed == false, nationality != 'American')
+    $mytax: taxfile(processed == false, income < 50000)
 then
-	System.out.println("Hello traveller " + $traveller);   
-	$traveller.setProcessed( true );
+	System.out.println("Hello taxpayer " + $mytax);   
+	$mytax.setProcessed( true );
     
 end
 
-rule "Don't process travellers from US" ruleflow-group "travellers"
+rule "Don't process taxfile above 50k income" ruleflow-group "deductions"
 
 when
-    $traveller: Traveller(processed == false, nationality == 'American')
+    $mytax: taxfile(processed == false, income > 50000)
 then
-	System.out.println("This system can't deal with " + $traveller.getNationality());
- 	$traveller.setProcessed( false ); 
+	System.out.println("This system can't process your income " + $mytax.getIncome() + " which is above 50k");
+ 	$mytax.setProcessed( false ); 
     
 end
