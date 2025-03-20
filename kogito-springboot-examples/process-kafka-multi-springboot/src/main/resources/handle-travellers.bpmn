@@ -46,7 +46,7 @@
           <drools:metaValue><![CDATA[Yes]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return traveller.isProcessed();]]></bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return mytax.isProcessed();]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_EDFD7D46-79EC-4C49-B6D8-5873E9301AC7" name="No" sourceRef="_58FF9DA5-06C6-4D71-91CD-6EAE4E999CF9" targetRef="_0C615323-1520-40BF-8A41-46C2BBC6819C">
       <bpmn2:extensionElements>
@@ -54,7 +54,7 @@
           <drools:metaValue><![CDATA[No]]></drools:metaValue>
         </drools:metaData>
       </bpmn2:extensionElements>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return !traveller.isProcessed();]]></bpmn2:conditionExpression>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return !mytax.isProcessed();]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_96F8E118-C58C-4369-89DC-2C881614FF73" sourceRef="_60FA6326-76DC-4DB2-AB06-DB8AC8EE8DC8" targetRef="_58FF9DA5-06C6-4D71-91CD-6EAE4E999CF9"/>
     <bpmn2:sequenceFlow id="_6ED9B3DA-9FD9-49F3-A70E-A6AB6712A628" sourceRef="_B7417363-C542-4A4A-A314-2AF370DE2515" targetRef="_0E0784C3-1BEC-4A51-A5E6-D7E5DA3A4402">
