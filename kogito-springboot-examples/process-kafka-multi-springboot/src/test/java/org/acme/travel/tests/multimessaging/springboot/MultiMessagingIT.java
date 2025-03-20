@@ -28,7 +28,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
-import org.acme.travel.Traveller;
+import org.acme.travel.taxfile;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.kie.kogito.test.springboot.kafka.KafkaTestClient;
@@ -56,9 +56,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 @ContextConfiguration(initializers = KafkaSpringBootTestResource.class)
 public class MultiMessagingIT {
 
-    public static final String TOPIC_PRODUCER = "travellers";
-    public static final String TOPIC_PROCESSED_CONSUMER = "processedtravellers";
-    public static final String TOPIC_CANCEL_CONSUMER = "cancelledtravellers";
+    public static final String TOPIC_PRODUCER = "input";
+    public static final String TOPIC_PROCESSED_CONSUMER = "processed";
+    public static final String TOPIC_CANCEL_CONSUMER = "skipped";
 
     private static Logger LOGGER = LoggerFactory.getLogger(MultiMessagingIT.class);
 
@@ -80,11 +80,9 @@ public class MultiMessagingIT {
             LOGGER.info("Received from kafka: {}", s);
             try {
                 JsonNode event = objectMapper.readValue(s, JsonNode.class);
-                Traveller traveller = objectMapper.readValue(event.get("data").toString(), Traveller.class);
-                assertEquals(!traveller.getNationality().equals("American"), traveller.isProcessed());
-                assertTrue(traveller.getFirstName().matches("Name[0-9]+"));
-                assertTrue(traveller.getLastName().matches("LastName[0-9]+"));
-                assertTrue(traveller.getEmail().matches("email[0-9]+"));
+                taxfile mytax = objectMapper.readValue(event.get("data").toString(), taxfile.class);
+                assertEquals(mytax.getIncome() < 50000, mytax.isProcessed());
+                assertTrue(mytax.getName().matches("Name[0-9]+"));
                 countDownLatch.countDown();
             } catch (JsonProcessingException e) {
                 LOGGER.error("Error parsing {}", s, e);
@@ -93,27 +91,23 @@ public class MultiMessagingIT {
         });
 
         IntStream.range(0, count)
-                .mapToObj(i -> new Traveller("Name" + i, "LastName" + i, "email" + i, getNationality(i)))
-                .forEach(traveller -> kafkaClient.produce(generateCloudEvent(traveller), TOPIC_PRODUCER));
+                .mapToObj(i -> new taxfile("Name" + i, i, i))
+                .forEach(mytax -> kafkaClient.produce(generateCloudEvent(mytax), TOPIC_PRODUCER));
 
         countDownLatch.await(10, TimeUnit.SECONDS);
         assertEquals(0, countDownLatch.getCount());
     }
 
-    private String getNationality(int i) {
-        return i % 2 == 0 ? "American" : "Spanish";
-    }
-
-    private String generateCloudEvent(Traveller traveller) {
-        assertFalse(traveller.isProcessed());
+    private String generateCloudEvent(taxfile mytax) {
+        assertFalse(mytax.isProcessed());
         try {
             return objectMapper.writeValueAsString(CloudEventBuilder.v1()
                     .withId(UUID.randomUUID().toString())
                     .withSource(URI.create(""))
                     //Start message event name in handle-travellers.bpmn
-                    .withType("travellers")
+                    .withType("deductions")
                     .withTime(OffsetDateTime.now())
-                    .withData(objectMapper.writeValueAsString(traveller).getBytes())
+                    .withData(objectMapper.writeValueAsString(mytax).getBytes())
                     .build());
         } catch (JsonProcessingException e) {
             throw new UncheckedIOException(e);
