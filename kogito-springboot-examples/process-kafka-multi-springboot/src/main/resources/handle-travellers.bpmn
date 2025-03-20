@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_Oa8JEOf7ED2mC4hdCieJWw" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
-  <bpmn2:itemDefinition id="_travellerItem" structureRef="org.acme.travel.Traveller"/>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_vCklwOf_ED2mC4hdCieJWw" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd http://www.omg.org/spec/DD/20100524/DC DC.xsd http://www.omg.org/spec/DD/20100524/DI DI.xsd " exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_mytaxItem" structureRef="org.acme.travel.taxfile"/>
   <bpmn2:itemDefinition id="__0E0784C3-1BEC-4A51-A5E6-D7E5DA3A4402_eventInputXItem" structureRef="org.acme.travel.taxfile"/>
   <bpmn2:itemDefinition id="processedType" structureRef="org.acme.travel.taxfile"/>
@@ -12,18 +11,17 @@
   <bpmn2:itemDefinition id="__60FA6326-76DC-4DB2-AB06-DB8AC8EE8DC8_mytaxOutputXItem" structureRef="org.acme.travel.taxfile"/>
   <bpmn2:itemDefinition id="__8BEA9396-93DE-4D44-8CE2-4A146464264E_eventOutputXItem" structureRef="org.acme.travel.taxfile"/>
   <bpmn2:itemDefinition id="inputType" structureRef="org.acme.travel.taxfile"/>
-  <bpmn2:itemDefinition id="_BD55FB05-BB8B-4701-BDB2-1539C821DF7F" structureRef=""/>
-  <bpmn2:itemDefinition id="_5799DEBD-CD41-48E7-BA40-B630E2BC9543" structureRef=""/>
+  <bpmn2:itemDefinition id="_C676D5CF-88D4-4409-95F2-2813DA5A3A5E" structureRef=""/>
+  <bpmn2:itemDefinition id="_65630662-B505-45CD-BF2A-378F7AA0FB3C" structureRef=""/>
   <bpmn2:itemDefinition id="__67233131-DCD2-4EFC-9B7A-0754E12375AC_eventInputXItem" structureRef="org.acme.travel.taxfile"/>
   <bpmn2:itemDefinition id="skipType" structureRef="org.acme.travel.taxfile"/>
-  <bpmn2:message id="_Oa8wIOf7ED2mC4hdCieJWw" itemRef="processedType" name="processed"/>
-  <bpmn2:message id="_Oa8wIef7ED2mC4hdCieJWw" itemRef="inputType" name="input"/>
-  <bpmn2:message id="_Oa8wIuf7ED2mC4hdCieJWw" itemRef="skipType" name="skip"/>
-  <bpmn2:collaboration id="_517403CD-67EC-446D-AA52-2F5F8288E50A" name="Default Collaboration">
-    <bpmn2:participant id="_5F27B2EA-1D26-45E4-A80D-86E6C6BF4D42" name="Pool Participant" processRef="Taxfiles"/>
+  <bpmn2:message id="_vClz4Of_ED2mC4hdCieJWw" itemRef="processedType" name="processed"/>
+  <bpmn2:message id="_vClz4ef_ED2mC4hdCieJWw" itemRef="inputType" name="input"/>
+  <bpmn2:message id="_vClz4uf_ED2mC4hdCieJWw" itemRef="skipType" name="skip"/>
+  <bpmn2:collaboration id="_0319E094-54EF-4DFB-8BC2-69EB16623C46" name="Default Collaboration">
+    <bpmn2:participant id="_81600CF4-F374-4008-B094-41BCDB3307EE" name="Pool Participant" processRef="Taxfiles"/>
   </bpmn2:collaboration>
   <bpmn2:process id="Taxfiles" drools:packageName="org.kie.kogito.test" drools:version="1.0" drools:adHoc="false" name="1040 Processing" isExecutable="true" processType="Public">
-    <bpmn2:property id="traveller" itemSubjectRef="_travellerItem" name="traveller"/>
     <bpmn2:property id="mytax" itemSubjectRef="_mytaxItem" name="mytax"/>
     <bpmn2:sequenceFlow id="_148A7959-371E-4EC5-9676-1A98C95BA7E8" sourceRef="_0C615323-1520-40BF-8A41-46C2BBC6819C" targetRef="_67233131-DCD2-4EFC-9B7A-0754E12375AC">
       <bpmn2:extensionElements>
@@ -42,14 +40,6 @@
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="_EDFD7D46-79EC-4C49-B6D8-5873E9301AC7" name="No" sourceRef="_58FF9DA5-06C6-4D71-91CD-6EAE4E999CF9" targetRef="_0C615323-1520-40BF-8A41-46C2BBC6819C">
-      <bpmn2:extensionElements>
-        <drools:metaData name="elementname">
-          <drools:metaValue><![CDATA[No]]></drools:metaValue>
-        </drools:metaData>
-      </bpmn2:extensionElements>
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return !traveller.isProcessed();]]></bpmn2:conditionExpression>
-    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_C5756B00-2541-4948-A7F5-4494A10E3A31" name="Yes" sourceRef="_58FF9DA5-06C6-4D71-91CD-6EAE4E999CF9" targetRef="_B7417363-C542-4A4A-A314-2AF370DE2515">
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
@@ -57,6 +47,14 @@
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return traveller.isProcessed();]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_EDFD7D46-79EC-4C49-B6D8-5873E9301AC7" name="No" sourceRef="_58FF9DA5-06C6-4D71-91CD-6EAE4E999CF9" targetRef="_0C615323-1520-40BF-8A41-46C2BBC6819C">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[No]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return !traveller.isProcessed();]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_96F8E118-C58C-4369-89DC-2C881614FF73" sourceRef="_60FA6326-76DC-4DB2-AB06-DB8AC8EE8DC8" targetRef="_58FF9DA5-06C6-4D71-91CD-6EAE4E999CF9"/>
     <bpmn2:sequenceFlow id="_6ED9B3DA-9FD9-49F3-A70E-A6AB6712A628" sourceRef="_B7417363-C542-4A4A-A314-2AF370DE2515" targetRef="_0E0784C3-1BEC-4A51-A5E6-D7E5DA3A4402">
@@ -84,7 +82,7 @@
       <bpmn2:inputSet>
         <bpmn2:dataInputRefs>_67233131-DCD2-4EFC-9B7A-0754E12375AC_eventInputX</bpmn2:dataInputRefs>
       </bpmn2:inputSet>
-      <bpmn2:messageEventDefinition drools:msgref="skip" messageRef="_Oa8wIuf7ED2mC4hdCieJWw"/>
+      <bpmn2:messageEventDefinition drools:msgref="skip" messageRef="_vClz4uf_ED2mC4hdCieJWw"/>
     </bpmn2:endEvent>
     <bpmn2:scriptTask id="_0C615323-1520-40BF-8A41-46C2BBC6819C" name="skip" scriptFormat="http://www.java.com/java">
       <bpmn2:extensionElements>
@@ -121,7 +119,7 @@
       <bpmn2:outputSet>
         <bpmn2:dataOutputRefs>_8BEA9396-93DE-4D44-8CE2-4A146464264E_eventOutputX</bpmn2:dataOutputRefs>
       </bpmn2:outputSet>
-      <bpmn2:messageEventDefinition drools:msgref="input" messageRef="_Oa8wIef7ED2mC4hdCieJWw"/>
+      <bpmn2:messageEventDefinition drools:msgref="input" messageRef="_vClz4ef_ED2mC4hdCieJWw"/>
     </bpmn2:startEvent>
     <bpmn2:businessRuleTask id="_60FA6326-76DC-4DB2-AB06-DB8AC8EE8DC8" drools:ruleFlowGroup="deductions" name="Determine Deductions" implementation="http://www.jboss.org/drools/rule">
       <bpmn2:extensionElements>
@@ -157,8 +155,8 @@
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_96F8E118-C58C-4369-89DC-2C881614FF73</bpmn2:incoming>
-      <bpmn2:outgoing>_C5756B00-2541-4948-A7F5-4494A10E3A31</bpmn2:outgoing>
       <bpmn2:outgoing>_EDFD7D46-79EC-4C49-B6D8-5873E9301AC7</bpmn2:outgoing>
+      <bpmn2:outgoing>_C5756B00-2541-4948-A7F5-4494A10E3A31</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:endEvent id="_0E0784C3-1BEC-4A51-A5E6-D7E5DA3A4402" name="processed taxfile">
       <bpmn2:extensionElements>
@@ -175,7 +173,7 @@
       <bpmn2:inputSet>
         <bpmn2:dataInputRefs>_0E0784C3-1BEC-4A51-A5E6-D7E5DA3A4402_eventInputX</bpmn2:dataInputRefs>
       </bpmn2:inputSet>
-      <bpmn2:messageEventDefinition drools:msgref="processed" messageRef="_Oa8wIOf7ED2mC4hdCieJWw"/>
+      <bpmn2:messageEventDefinition drools:msgref="processed" messageRef="_vClz4Of_ED2mC4hdCieJWw"/>
     </bpmn2:endEvent>
   </bpmn2:process>
   <bpmndi:BPMNDiagram>
@@ -209,14 +207,14 @@
         <di:waypoint x="802" y="221"/>
         <di:waypoint x="882" y="221"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__58FF9DA5-06C6-4D71-91CD-6EAE4E999CF9_to_shape__B7417363-C542-4A4A-A314-2AF370DE2515" bpmnElement="_C5756B00-2541-4948-A7F5-4494A10E3A31">
-        <di:waypoint x="938" y="221"/>
-        <di:waypoint x="1018" y="221"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__58FF9DA5-06C6-4D71-91CD-6EAE4E999CF9_to_shape__0C615323-1520-40BF-8A41-46C2BBC6819C" bpmnElement="_EDFD7D46-79EC-4C49-B6D8-5873E9301AC7">
         <di:waypoint x="910" y="249"/>
         <di:waypoint x="910" y="412"/>
         <di:waypoint x="1018" y="412"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__58FF9DA5-06C6-4D71-91CD-6EAE4E999CF9_to_shape__B7417363-C542-4A4A-A314-2AF370DE2515" bpmnElement="_C5756B00-2541-4948-A7F5-4494A10E3A31">
+        <di:waypoint x="938" y="221"/>
+        <di:waypoint x="1018" y="221"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__8BEA9396-93DE-4D44-8CE2-4A146464264E_to_shape__60FA6326-76DC-4DB2-AB06-DB8AC8EE8DC8" bpmnElement="_D15CD483-D31D-42F8-A93A-AAAF44292D84">
         <di:waypoint x="576" y="221"/>
@@ -296,7 +294,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_Oa8JEOf7ED2mC4hdCieJWw</bpmn2:source>
-    <bpmn2:target>_Oa8JEOf7ED2mC4hdCieJWw</bpmn2:target>
+    <bpmn2:source>_vCklwOf_ED2mC4hdCieJWw</bpmn2:source>
+    <bpmn2:target>_vCklwOf_ED2mC4hdCieJWw</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
