@@ -19,13 +19,17 @@
 package org.acme.travel;
 
 public class taxfile {
-
     private String name;
     private int income;
     private int expenses;
     private boolean processed;
-  
+    
+    public taxfile() {
+
+    }
+
     public taxfile(String name, int income, int expenses) {
+        super();
         this.name = name;
         this.income = income;
         this.expenses = expenses;
